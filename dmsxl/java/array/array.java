@@ -4,11 +4,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class array {
 
     public static void main(String[] args) throws Exception{
-        System.out.println(new array().minSubArrayLen(7, new int[]{2, 3, 1, 2, 4, 3}));
+        System.out.println(new array().generateMatrix(3));
     }
     /**
      * q:二分查找 lc704
@@ -96,6 +97,8 @@ public class array {
 
     /**
      * q：长度最小的子数组，lc209
+     * grade：mid
+     * time：2022/8/4 15：26
      * @param target
      * @param nums
      * @return
@@ -117,5 +120,46 @@ public class array {
             }
         }
         return min==nums.length+1?0:min;
+    }
+
+
+    /**
+     * q：螺旋矩阵二，lc59
+     * grade：mid
+     * time：2022/8/24 15：26
+     * @param n
+     * @return
+     */
+    public int[][] generateMatrix(int n) {
+        // 值
+        int val=0;
+        int top=0;
+        int down=n-1;
+        int left=0;
+        int right=n-1;
+        int[][] res=new int[n][n];
+        while(val<n*n){
+            // 上面
+            for(int i=left;i<=right;i++){
+                res[top][i]=++val;
+            }
+            // 右面
+            for(int i=top+1;i<=down;i++){
+                res[i][right]=++val;
+            }
+            // 下面
+            for(int i=right-1;i>=left;i--){
+                res[down][i]=++val;
+            }
+            // 左面
+            for(int i=down-1;i>top;i--){
+                res[i][left]=++val;
+            }
+            top++;
+            down--;
+            left++;
+            right--;
+        }
+        return res;
     }
 }
