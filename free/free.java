@@ -28,7 +28,11 @@ public class free {
                     break;
                 }
             }
+
         }
         return stack.isEmpty()?true:false;
     }
+
+
 }
+

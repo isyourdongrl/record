@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class array {
 
     public static void main(String[] args) throws Exception{
-        System.out.println(new array().generateMatrix(3));
+
     }
     /**
      * q:二分查找 lc704
