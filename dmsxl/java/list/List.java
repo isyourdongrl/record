@@ -1,12 +1,10 @@
 package list;
 
+import java.lang.reflect.Executable;
+
 public class List {
 
     public static void main(String[] args) {
-        MyLinkedList li = new MyLinkedList();
-        li.addAtHead(1);
-        li.addAtTail(3);
-        li.addAtIndex(1,2);
 
 
     }
@@ -36,6 +34,32 @@ public class List {
         node.next=null;
         return dummy.next;
     }
+
+    /**
+     * q：反转链表 lc206
+     * grade：easy
+     * time：2022/9/6
+     * @param head
+     * @return
+     */
+    public ListNode reverseList(ListNode head) {
+        if(head==null || head.next==null){
+            return head;
+        }
+
+        ListNode prev=head;
+        head=head.next;
+        prev.next=null;
+        while(head!=null && head.next!=null){
+            ListNode temp=head;
+            head=head.next;
+            temp.next=prev;
+            prev=temp;
+        }
+        head.next=prev;
+        return head;
+    }
+
 }
 
 
