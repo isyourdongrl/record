@@ -281,22 +281,6 @@ public class List {
         }
     }
 
-    class Node{
-        int val;
-        Node next;
-        int size;
 
-        public Node(){}
 
-        public Node(int val){
-            this.val=val;
-        }
-    }
 
- class ListNode {
-    int val;
-    ListNode next;
-    ListNode() {}
-    ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
