@@ -8,7 +8,6 @@ import java.util.*;
  */
 public class free {
 
-    List<Integer> res = new ArrayList<>();
 
     public static void main(String[] args) {
 
