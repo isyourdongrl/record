@@ -6,7 +6,7 @@ import java.util.*;
 public class Tree {
 
     public static void main(String[] args) {
-        System.out.println((long)2*2147483647);
+
     }
 
     /**
@@ -366,12 +366,5 @@ public class Tree {
         // 返回树的高度
         return 1+Math.max(left,right);
     }
-
-
-
-
-
-
-
 }
 

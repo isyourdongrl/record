@@ -12,10 +12,45 @@ public class XiaoMi {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{4, 6, 3, 1, 42, 2};
-        new XiaoMi().quickSort(arr, 0, arr.length - 1);
-        for (int i : arr) {
-            System.out.print(i + " ");
+        Scanner sc= new Scanner(System.in);
+        List<Integer> list=new ArrayList<>();
+        String str=sc.nextLine();
+        String[] strs=str.split(" ");
+        for (String s : strs) {
+            list.add(Integer.valueOf(s));
+        }
+
+
+        int n=list.get(list.size()-1);
+        list.remove(list.size()-1);
+
+
+        int res_l=0;
+        int res_r=0;
+        int l=0;
+        int r=0;
+        int min=Integer.MAX_VALUE;
+        int sum=0;
+        for(int i=0;i<list.size();i++){
+            sum+=list.get(i);
+            while(sum>=n && l<list.size()){
+                if(i-l+1<min){
+                    min=Math.min(min,i-l+1);
+                    res_l=l;
+                    res_r=i;
+                }
+                min=Math.min(min,i-l+1);
+                sum-=list.get(l);
+                l++;
+            }
+        }
+
+        if(min==Integer.MAX_VALUE){
+            System.out.println(list.get(0));
+        }else{
+            for(int i=res_l;i<=res_r;i++){
+                System.out.print(i+" ");
+            }
         }
     }
 
@@ -122,7 +157,7 @@ public class XiaoMi {
         ListNode fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
-            fast = fast.next;
+            fast = fast.next.next;
             if (slow == fast) {
                 return true;
             }
@@ -269,6 +304,7 @@ public class XiaoMi {
 
     /**
      * q：最小覆盖子串，lc76，小米安卓可接收java二面
+     *
      * @param s
      * @param t
      * @return
@@ -279,28 +315,29 @@ public class XiaoMi {
 
     /**
      * q：找数组中第一次只出现一次的数，无lc原题，小米安卓一面
+     *
      * @param arr
      * @return
      */
-    public int firstNum(int[] arr){
-        if(arr==null || arr.length==0){
+    public int firstNum(int[] arr) {
+        if (arr == null || arr.length == 0) {
             return -1;
         }
-        if(arr.length==1){
+        if (arr.length == 1) {
             return arr[0];
         }
 
-        HashMap<Integer,Integer> map=new HashMap<>();
-        for(int i:arr){
-            if(!map.containsKey(i)){
-                map.put(i,1);
-            }else{
-                map.put(i,map.get(i)+1);
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i : arr) {
+            if (!map.containsKey(i)) {
+                map.put(i, 1);
+            } else {
+                map.put(i, map.get(i) + 1);
             }
         }
 
         for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-            if(entry.getValue()==1){
+            if (entry.getValue() == 1) {
                 return entry.getKey();
             }
         }
@@ -309,54 +346,56 @@ public class XiaoMi {
 
     /**
      * q：二叉树的深度，剑指offer55，小米安卓一面
+     *
      * @param root
      * @return
      */
     public int maxDepth(TreeNode root) {
         // 结束条件
-        if(root==null){
+        if (root == null) {
             return 0;
         }
 
         // 获取左子树的深度
-        int left=maxDepth(root.left);
+        int left = maxDepth(root.left);
         // 获取右子树的深度
-        int right=maxDepth(root.right);
-        return Math.max(left,right)+1;
+        int right = maxDepth(root.right);
+        return Math.max(left, right) + 1;
     }
 
     /**
      * q：加一个字符后判断字符串是否能够构造为回文串，牛客付费题目，小米安卓一面
+     *
      * @param str
      * @return
      */
-    public boolean addCharPalindrome(String str){
-        if(str==null || str.length()==0){
+    public boolean addCharPalindrome(String str) {
+        if (str == null || str.length() == 0) {
             return true;
         }
 
-        char[] arr=str.toCharArray();
+        char[] arr = str.toCharArray();
         int i;
         int j;
-        for(i=0,j=arr.length-1;i<=j;i++,j++) {
+        for (i = 0, j = arr.length - 1; i <= j; i++, j++) {
             if (arr[i] != arr[j]) {
                 break;
             }
         }
         // 若原本就是回文串，则可以构造成回文串
-        if(i>j){
+        if (i > j) {
             return true;
         }
         // 若原先不是回文串，则给原本的回文串减一个字符，判断是否为回文串
-        if(isPalindrome(i,j-1,arr) || isPalindrome(i+1,j,arr)){
+        if (isPalindrome(i, j - 1, arr) || isPalindrome(i + 1, j, arr)) {
             return true;
         }
         return false;
     }
 
-    public boolean isPalindrome(int i,int j,char[] arr){
-        while (i<=j){
-            if(arr[i]!=arr[j]){
+    public boolean isPalindrome(int i, int j, char[] arr) {
+        while (i <= j) {
+            if (arr[i] != arr[j]) {
                 return false;
             }
             i++;
@@ -367,12 +406,13 @@ public class XiaoMi {
 
     /**
      * q：判断相交链表，lc160，小米安卓二面
+     *
      * @param headA
      * @param headB
      * @return
      */
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if(headA==null || headB==null){
+        if (headA == null || headB == null) {
             return null;
         }
 
@@ -391,30 +431,31 @@ public class XiaoMi {
 //        return null;
 
         // 方法二
-        ListNode hA=headA;
-        ListNode hB=headB;
-        while (hA!=hB){
-            hA=hA==null?headB:hA.next;
-            hB=hB==null?headA:headB.next;
+        ListNode hA = headA;
+        ListNode hB = headB;
+        while (hA != hB) {
+            hA = hA == null ? headB : hA.next;
+            hB = hB == null ? headA : headB.next;
         }
         return hA;
     }
 
     /**
      * q：判断数字是否回文，牛客56，小米安卓实习二面
+     *
      * @param x
      * @return
      */
-    public boolean isPalindrome (int x) {
-        String str=String.valueOf(x);
-        if(str.length()==1){
+    public boolean isPalindrome(int x) {
+        String str = String.valueOf(x);
+        if (str.length() == 1) {
             return true;
         }
 
-        int i=0;
-        int j=str.length()-1;
-        while (i<=j){
-            if(str.charAt(i)!=str.charAt(j)){
+        int i = 0;
+        int j = str.length() - 1;
+        while (i <= j) {
+            if (str.charAt(i) != str.charAt(j)) {
                 return false;
             }
             i++;
@@ -425,45 +466,43 @@ public class XiaoMi {
 
     /**
      * q：链表指定位置反转，lc92，小米安卓二面
+     *
      * @param head
      * @param left
      * @param right
      * @return
      */
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        if(head==null || head.next==null){
+        if (head == null || head.next == null) {
             return head;
         }
 
         // 设置虚拟头节点
-        ListNode dummy=new ListNode();
-        dummy.next=head;
+        ListNode dummy = new ListNode();
+        dummy.next = head;
 
         // 找到left的pre
-        ListNode superior=dummy;
-        for(int i=0;i<left-1;i++){
-            superior=superior.next;
+        ListNode superior = dummy;
+        for (int i = 0; i < left - 1; i++) {
+            superior = superior.next;
         }
 
         // 反转链表
-        ListNode pre=null;
-        ListNode cur=superior.next;
-        for(int i=0;i<=right-left;i++){
-            ListNode next=cur.next;
-            cur.next=pre;
-            pre=cur;
-            cur=next;
+        ListNode pre = null;
+        ListNode cur = superior.next;
+        for (int i = 0; i <= right - left; i++) {
+            ListNode next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
         }
 
         // 将super.next指向最后一个
-        superior.next.next=cur;
-        superior.next=pre;
+        superior.next.next = cur;
+        superior.next = pre;
 
         return dummy.next;
     }
-
-
-
 
 
     /**
@@ -514,6 +553,8 @@ public class XiaoMi {
         quickSort(arr, left, l - 1);
         quickSort(arr, r + 1, right);
     }
+
+
 
 
 }

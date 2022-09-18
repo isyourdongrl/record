@@ -8,6 +8,17 @@ import java.util.*;
  */
 public class free {
 
+    List<Integer> res = new ArrayList<>();
+
+    public static void main(String[] args) {
+
+    }
+
+
+
+
+
+
     /**
      * 判断入栈序列和出栈序列是否对应  剑指offer31
      * @param pushed 入栈序列
@@ -194,4 +205,6 @@ public class free {
         return arr;
     }
 }
+
+
 

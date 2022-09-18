@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/dmsxl/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/free" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/xiaomi" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/beike" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/interview/grapeCity" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
