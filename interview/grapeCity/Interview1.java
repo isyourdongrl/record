@@ -2,7 +2,12 @@
  * 场景题，写能够实现五子棋的类
  */
 public class Interview1 {
-
+    static Black black;
+    public static void main(String[] args) {
+        new QiPan();
+        black=new Black();
+        int i=10/0;
+    }
 }
 
 
@@ -15,7 +20,8 @@ class QiPan{
 
     private Node[][] arr1;
 
-    public QiPan(){}
+    public QiPan(){
+    }
 
 
     // 初始化棋盘

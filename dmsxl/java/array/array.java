@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class array {
 
     public static void main(String[] args) throws Exception{
-
+        System.out.println(new array().search(new int[]{1, 2, 3, 4, 5, 6}, 5));
     }
     /**
      * q:二分查找 lc704

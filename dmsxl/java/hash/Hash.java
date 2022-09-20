@@ -105,6 +105,17 @@ public class Hash {
      * @return
      */
     public boolean isHappy(int n) {
-
+        // 防止循环
+        HashSet<Integer> set=new HashSet<>();
+        while (n>1 && !set.contains(n)){
+            set.add(n);
+            int i=0;
+            while (n!=0){
+                i+=Math.pow(n,2);
+                n/=10;
+            }
+            n=i;
+        }
+        return n==1?true:false;
     }
 }

@@ -10,6 +10,48 @@ public class free {
 
 
     public static void main(String[] args) {
+        // hne-pre:ag_hh_sms_action_storage
+        List<String> hne=new ArrayList<>();
+        hne.add("ag_glut_action_storage");
+        hne.add("ag_coupon_action_storage");
+        hne.add("ag_common_action_storage");
+        hne.add("ag_retry");
+        hne.add("ag_glut_retry");
+        hne.add("ag_real_time_storage");
+        hne.add("ag_real_time_retry_storage");
+        hne.add("ag_dmc_action_storage");
+        hne.add("ag_groupmsg_action_storage");
+        hne.add("ag_priority_high_action_storage");
+        hne.add("ag_brand_coupon_action_storage");
+        hne.add("ag_hh_push_action_storage");
+        hne.add("ag_hh_sms_action_storage");
+
+        List<String> hnb=new ArrayList<>();
+        hnb.add("ag_retry");
+        hnb.add("ag_hh_sms_action_storage");
+        hnb.add("ag_real_time_storage");
+        hnb.add("ag_dmc_action_storage");
+        hnb.add("ag_groupmsg_action_storage");
+        hnb.add("ag_hh_push_action_storage");
+        hnb.add("ag_brand_coupon_action_storage");
+        hnb.add("ag_priority_high_action_storage");
+        hnb.add("ag_real_time_retry_storage");
+        hnb.add("ag_glut_retry");
+        hnb.add("ag_common_action_storage");
+        hnb.add("ag_coupon_action_storage");
+        hnb.add("ag_glut_action_storage");
+
+
+        List<String> res=new ArrayList<>();
+        for(String s:hne){
+            if(!hnb.contains(s)){
+                res.add(s);
+            }
+        }
+
+        for (String s:res){
+            System.out.println(s);
+        }
 
     }
 
@@ -203,7 +245,43 @@ public class free {
         }
         return arr;
     }
+
+    /**
+     * q：有一个非空的乱序数组，其中有若干个0，请将所有的0全部移到数组末尾，同花顺笔试
+     * time：2022/9/19
+     * @param arr
+     */
+    public void method(int[] arr){
+        int r=arr.length;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]==0){
+                arr[i]=arr[i]^arr[r];
+                arr[r]=arr[i]^arr[r];
+                arr[i]=arr[i]^arr[r];
+                r--;
+            }
+        }
+        return;
+    }
 }
+
+/**
+ * hnb：10.88.128.16:8000
+ * 10.88.128.16:8000
+ * http://10.88.128.16:8000/
+ * http://10.88.128.16:8000/g
+ * 
+ * 
+ * 
+ *      ag_glut_action_storage
+ *      ag_coupon_action_storage
+ *      ag_common_action_storage
+ *      ag_glut_retry
+ *      ag_real_time_retry_storage
+ *      ag_priority_high_action_storage
+ *      ag_brand_coupon_action_storage
+ * ag_hh_push_action_storage
+ */
 
 
 
